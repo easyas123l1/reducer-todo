@@ -1,6 +1,8 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+
+import './App.css'
 
 import { appReducer, initialState } from './reducers/reducer';
 
@@ -18,33 +20,24 @@ const App = () => {
     dispatch({ type: 'ADD_TODO', payload: newItem})
   }
 
-  // addTodo = item => {
-  //   const newItem = {
-  //     name: item,
-  //     id: Date.now(),
-  //     completed: false,
-  //     show: true
-  //   }
-  //   this.setState({ todo: [...this.state.todo, newItem ]})
-  // }
-
+  const clearSelected = () => {
+    dispatch({ type: 'CLEAR_COMPLETE', })
+  }
 
   // handleChanges = (e) => {
   //   this.setState({ search: e.target.value })
   //   this.toggleShow(e.target.value);
   // }
 
-  // filterCompleted = () => {
-  //   this.setState({
-  //     todo: this.state.todo.filter(item =>  !item.completed)
-  //   })
-  // }
+  const toggleComplete = (id) => {
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: id})
+  }
 
   return (
     <div className='big'>
       <h2 className='h2'>Welcome to your Todo App!</h2>
-      <TodoForm addItem={addItem} />
-      <TodoList todo={items} /> 
+      <TodoForm addItem={addItem} clearSelected={clearSelected} />
+      <TodoList todo={items} toggleComplete={toggleComplete} /> 
     </div>
   );
 }

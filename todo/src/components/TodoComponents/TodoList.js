@@ -1,15 +1,15 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = props => {
+const TodoList = ({todo, toggleComplete}) => {
   return (
     <div className='todo'>
-      {props.todo.map(item => (
+      {todo.map(item => (
         item.show &&
         <Todo 
         key={item.id}
         todo={item}
-        toggleCompleted={props.toggleCompleted}
+        toggleCompleted={toggleComplete}
         />
       ))}
     </div>

@@ -14,11 +14,11 @@ const TodoForm = props => {
     setTodo('')
   }
 
-  // clearSelected = e => {
-  //   e.preventDefault();
-  //   console.log('Clear selected');
-  //   this.props.filterCompleted();
-  // }
+  const handleClear = e => {
+    e.preventDefault();
+    console.log('Clear selected');
+    props.clearSelected();
+  }
 
   return (
     <form className='Todo' onSubmit={handleSubmit}>
@@ -29,7 +29,7 @@ const TodoForm = props => {
        onChange={handleChanges}
       />
       <button>Add</button>
-      <button /*</form>onClick={this.clearSelected}*/>Clear Completed</button>
+      <button onClick={handleClear}>Clear Completed</button>
     </form>
   )
 }
