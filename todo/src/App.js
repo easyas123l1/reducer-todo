@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer, useState } from 'react';
+import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoComponents/TodoList';
 
-function App() {
+import { appReducer, initialState } from './reducers/reducer';
+
+const App = () => {
+  const [{ items }, dispatch] = useReducer(appReducer, initialState);
+
+  const addItem = (item) => {
+    const newItem = {
+      name: item,
+      id: Date.now(),
+      completed: false,
+      show: true
+    }
+
+    dispatch({ type: 'ADD_TODO', payload: newItem})
+  }
+
+  // addTodo = item => {
+  //   const newItem = {
+  //     name: item,
+  //     id: Date.now(),
+  //     completed: false,
+  //     show: true
+  //   }
+  //   this.setState({ todo: [...this.state.todo, newItem ]})
+  // }
+
+
+  // handleChanges = (e) => {
+  //   this.setState({ search: e.target.value })
+  //   this.toggleShow(e.target.value);
+  // }
+
+  // filterCompleted = () => {
+  //   this.setState({
+  //     todo: this.state.todo.filter(item =>  !item.completed)
+  //   })
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='big'>
+      <h2 className='h2'>Welcome to your Todo App!</h2>
+      <TodoForm addItem={addItem} />
+      <TodoList todo={items} /> 
     </div>
   );
 }
