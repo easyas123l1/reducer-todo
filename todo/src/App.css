@@ -1,0 +1,40 @@
+.completed {
+  text-decoration: line-through;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  color: red;
+  text-align: center;
+}
+
+body {
+  background-color: gray;
+}
+
+.big {
+  flex-direction: column;
+}
+
+.h2 {
+  text-align: center;
+  margin: 1%;
+}
+
+.Todo {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.todo {
+  margin: 0 auto;
+  background-color: white;
+  width: 50%;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin: 2%;
+}
